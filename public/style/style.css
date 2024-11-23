@@ -1,0 +1,36 @@
+body{
+    background-color: white;
+}
+
+.nav {
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.navigation {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around; /* Distribute items evenly */
+}
+
+.navigation li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.navigation li a {
+    text-decoration: none;
+    color: #333; /* Dark text color */
+    font-weight: bold;
+}
+
+.navigation li a:hover {
+    color: #007BFF; /* Change color on hover */
+}
+
+.center-text {
+    text-align: center;
+}
