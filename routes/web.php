@@ -101,11 +101,18 @@ Route::post('/admin/moderators', [UserController::class, 'store_moderator'])->na
 // Uzivatel routa
 Route::get('/user', [RegistrovanyUzivatelController::class, 'user'])->name('user');
 
+
+// preklik na navr_kategorie
 Route::get('/user/navrh_kategorie', [RegistrovanyUzivatelController::class, 'navrhnut_kategoriu'])->name('navrhnut_kategoriu');
+
+// ulozenie noveho navrhu
+Route::post('/user/ulozit_navrh_kategorie', [RegistrovanyUzivatelController::class, 'ulozit_navrh_kategorie'])->name('ulozit_navrh_kategorie');
+
+Route::get('/user/prechadzat_nabidky', [ZakaznikController::class, 'prechadzat_nabidky'])->name('prechadzat_nabidky');
 
 Route::get('/user/vlozit_nabidku', [RegistrovanyUzivatelController::class, 'vlozit_nabidku'])->name('vlozit_nabidku');
 
-Route::get('/user/prechadzat_nabidky', [ZakaznikController::class, 'prechadzat_nabidky'])->name('prechadzat_nabidky');
+Route::post('/user/ulozit_nabidku', [RegistrovanyUzivatelController::class, 'ulozit_nabidku'])->name('ulozit_nabidku');
 
 Route::get('/user/samozber/create', [SamozberController::class, 'create'])->name('samozber.create');
 Route::post('/user/samozber', [SamozberController::class, 'store'])->name('samozber.store');
@@ -116,3 +123,7 @@ Route::get('/user/edit', [LoginController::class, 'editProfile'])->name('editPro
 Route::post('/user/edit', [LoginController::class, 'updateProfile'])->name('updateProfile')->middleware('auth');
 
 Route::get('/user/zobrazit_nabidky', [RegistrovanyUzivatelController::class, 'zobrazit_nabidky'])->name('zobrazit_nabidky');
+
+Route::get('/nabidka/{id}/edit', [RegistrovanyUzivatelController::class, 'nabidka_edit'])->name('nabidka_edit');
+
+Route::post('/nabidka/{id}/update', [RegistrovanyUzivatelController::class, 'nabidka_update'])->name('nabidka_update');

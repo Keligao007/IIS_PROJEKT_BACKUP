@@ -34,7 +34,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Meno</th>
-                    <th>Akcie</th>
+                    <th>Nadradena ID</th>
+                <th>Akcie</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,7 +43,8 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->meno }}</td>
-                        <td>
+                        <td>{{ $item->parent_kategoria_id }}</td>
+                    <td>
                             <a href="{{ route('show_kategorie_detail', ['id'=> $item->id]) }}" class="action-link">Spravovať atribúty</a>
                             <form action="{{ route('delete_kategoria', ['id' => $item->id]) }}" method="POST" style="display: inline;" onsubmit="return confirm('Naozaj chcete vymazať?');">
                                 @csrf

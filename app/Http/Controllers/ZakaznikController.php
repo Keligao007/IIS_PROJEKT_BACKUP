@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ZakaznikController extends Controller
 {
     // public function prechadzat_nabidky() {
-    //     return view('user/nabidky');
+            //     return view('user/nabidky');
     // }
 
     public function prechadzat_nabidky()

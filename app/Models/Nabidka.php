@@ -35,5 +35,10 @@ class Nabidka extends Model
         return $this->hasMany(Objednavka::class, 'id_nabidka');
     }
 
+    public function atributy()
+    {
+        return $this->hasMany(NabidkaAtribut::class, 'id_nabidka');
+    }
+
     public $timestamps = true;
 }

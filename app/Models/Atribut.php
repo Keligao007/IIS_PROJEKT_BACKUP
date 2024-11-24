@@ -39,9 +39,10 @@ class Atribut extends Model
         return $this->hasMany(ObjednavkaAtribut::class, 'id_atribut');
     }
 
-    public function kategoria_plodin()
+    public function kategorie()
     {
-        return $this->belongsToMany(KategoriaPlodin::class, 'kategoria_plodin_atribut', 'id_kategoria_plodin', 'id_atribut');
+        // return $this->belongsToMany(KategoriaPlodin::class, 'kategoria_plodin_atribut', 'id_kategoria_plodin', 'id_atribut');
+        return $this->belongsToMany(KategoriaPlodin::class, 'kategoria_plodin_atribut', 'id_atribut', 'id_kategoria_plodin');
     }
 
     public $timestamps = false;

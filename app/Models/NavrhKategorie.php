@@ -38,6 +38,11 @@ class NavrhKategorie extends Model
     {
         return $this->belongsTo(KategoriaPlodin::class, 'parent_kategoria_id');
     }
+    
+    public function atributy_navrh() // bolo len atributy
+    {
+        return $this->belongsToMany(Atribut::class, 'navrh_kategorie_atribut', 'id_navrh_kategorie', 'id_atribut');
+    }
 
     public $timestamps = true;
 }
