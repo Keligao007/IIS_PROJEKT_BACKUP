@@ -1,6 +1,25 @@
 body{
     background-color: white;
+    font-family: 'Roboto', sans-serif; /* Updated font */
 }
+
+/* ****************** LOGO NA FOOTERI ****************** */
+
+.social-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 75px;
+}
+
+.social-link i {
+    margin-right: 10px;
+    font-size: 1.5em; /* Adjust the size as needed */
+}
+
+/* ****************** NAVIGACIA ****************** */
 
 .nav {
     background-color: #f0f0f0; /* Light gray background */
@@ -28,9 +47,319 @@ body{
 }
 
 .navigation li a:hover {
-    color: #007BFF; /* Change color on hover */
+    color: #8a8a8a; /* Change color on hover */
 }
 
 .center-text {
     text-align: center;
+}
+
+/* ****************** LOGIN ****************** */
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4e4e4e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.login-container button:hover {
+    background-color: #333; /* Dark text color */;
+}
+
+/* for the copyright to be bigger */
+.large-copy {
+    font-size: 1.4em; 
+}
+
+/* for the text in button to be bigger */
+.large-button {
+    font-size: 1.2em;
+}
+
+/* ****************** MODERATOR ****************** */
+
+.moderator-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    text-align: center;
+}
+
+.moderator-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.moderator-container h2 {
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.styled-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #535353;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif; /* Updated font */
+    font-size: 1.8em;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.styled-button:hover {
+    background-color: #2f2f2f;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.styled-table th, .styled-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.styled-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.styled-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.styled-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.styled-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.styled-list li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.action-link {
+    background-color: #979797;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 10px; 
+    cursor: pointer;
+}
+
+.action-link:hover {
+    background-color: #6e6e6e;
+    text-decoration: none;
+}
+
+.delete-button {
+    background-color: #FF0000;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 200px;
+}
+
+.delete-button:hover {
+    background-color: #CC0000;
+}
+
+.pridat-button {
+    margin-top: 10px;
+    background-color: #494949;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+    font-size: 1em;
+}
+
+.pridat-button:hover {
+    background-color: #333333;
+}
+
+.approve-button {
+    background-color: #00ff00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 30%;
+    font-size: 1.2em;
+}
+
+.approve-button:hover {
+    background-color: #098d00;
+}
+
+.not-approve-button {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 30%;
+    font-size: 1.2em;
+}
+
+.not-approve-button:hover {
+    background-color: #770000;
+}
+
+/* ****************** SAMOZBER ****************** */
+
+.samozber-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.samozber-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Increased width */
+    text-align: center;
+}
+
+.samozber-container h1 {
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif; /* Updated font */
+}
+
+/* ****************** SLIDER ****************** */
+
+.slider {
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    width: 95vw; /* Full viewport width */
+    height: 60vh;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+.slides img {
+    width: 100%;
+    height: 100%; /* Full height of the slider */
+    object-fit: contain; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    flex: 1 0 100%; /* Ensure each image takes up 100% of the slider width */
+    border-radius: 10px;
+}
+
+.slider-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.slider-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* ****************** PROJEKT TEXT ****************** */
+
+.project-description {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-description h2 {
+    margin-bottom: 10px;
+}
+
+.project-description p {
+    font-size: 1.1em;
+    line-height: 1.6;
 }

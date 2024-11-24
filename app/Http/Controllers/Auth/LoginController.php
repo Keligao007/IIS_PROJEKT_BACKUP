@@ -44,7 +44,6 @@ class LoginController extends Controller
             // return redirect()->intended('/');
             if ($user->type === 'regular') {
                 // Presmerovanie na stránku pre bežných používateľov
-                // return redirect()->route('index'); 
                 return redirect()->route('user'); 
 
             } elseif ($user->type === 'moderator') {
@@ -83,4 +82,41 @@ class LoginController extends Controller
         return redirect('/');
         // return redirect('common'); // Presmeruje na prihlasovaciu stránku
     }
+
+    
+    /**
+     * Zobrazí formulár pre editáciu profilu.
+     */
+    public function editProfile()
+    {
+        $user = Auth::user();
+        return view('profile.edit', compact('user'));
+    }
+
+    /**
+    * Zobrazí formulár pre editáciu profilu.
+    */
+    public function updateProfile(Request $request)
+    {
+    // Ensure the user is authenticated
+    $user = Auth::user();
+    if (!$user) {
+        return redirect()->route('login')->withErrors('You must be logged in to update your profile.');
+    }
+    
+    // Validácia údajov
+    $request->validate([
+        'login' => 'required|string|max:255',
+    ]);
+
+    // Aktualizácia mena používateľa
+    $user->login = $request->input('login');
+    $user->save();
+    
+    // Spatne prihlasenie aby zostal prihlaseny
+    Auth::login($user);
+    
+    // Presmerovanie na hlavnú stránku s úspešnou správou
+    return redirect('/')->with('success', 'Profil bol úspešne aktualizovaný.');
+    }       
 }

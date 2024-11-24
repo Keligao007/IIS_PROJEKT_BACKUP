@@ -3,30 +3,20 @@
 @section('title', 'Moderator')
 @section('header', 'Moderator')
 
-
-<?php
-if (isset($_SESSION['user']))
-{
-    //echo "Current user: <strong>" . $_SESSION['user'] . '</strong>';
-    //echo '<p><a href="admin.php">Go to admin page</a>';
-    //echo '<p><a href="logout.php">Logout</a>';
-}
-else
-{
-
-}
-?>
-
 @section('content')
-    <a href="{{ route('moderator_kategorie') }}">
-        <button >Spravovať kategórie</button>
-    </a>
+<div class="moderator-page">
+    <div class="moderator-container">
+        <a href="{{ route('moderator_kategorie') }}" class="styled-button">
+            Spravovať kategórie
+        </a>
 
-    <br />
-    <br />
-    <br />
+        <br />
+        <br />
+        <br />
 
-    <a href="{{ route('moderator_navrhy') }}">
-        <button >Návrhy uživateľov</button>
-    </a>
+        <a href="{{ route('moderator_navrhy') }}" class="styled-button">
+            Návrhy uživateľov
+        </a>
+    </div>
+</div>
 @endsection

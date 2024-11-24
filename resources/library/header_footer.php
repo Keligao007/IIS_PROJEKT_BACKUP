@@ -50,7 +50,7 @@ function make_header($title)
 function make_header_unlogin($title)
 {
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -96,37 +96,111 @@ function make_header_login($title)
         <li><a href="<?php echo url('/'); ?>"><i class="fas fa-home"></i> Home</a></li>
         <li><a href="<?php echo url('/edit'); ?>"><i class="fas fa-user-edit"></i> Edit Profile</a></li>
         <li><a href="<?php echo url('/logout'); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-
-        <!-- <li>
-          <form action="{{ route('/logout') }}" method="POST" style="display:inline;">
-            @csrf
-            <button type="submit" style="border: none; background: none; color: inherit; cursor: pointer;">
-              <i class="fas fa-sign-out-alt"></> Logout
-            </button>
-          </form>
-        </li> -->
       </ul>
-
-      <!-- <form action="{{ route('logout') }}" method="post">
-        @csrf
-        <input type="submit" value="Logout">
-      </form> -->
-
-      <!-- @if ($errors->any())
-        <div>
-            @foreach ($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-        </div>
-      @endif -->
-
       <div class="center-text">
           <?php
               // Display the user's login name
               echo "<h2>You are logged in as user: " . htmlspecialchars(Auth::user()->login) . "</h2>";
           ?>
       </div>
+    </div>
+  </header>
+<?php
+}
 
+// header for moderator
+function make_header_moderator($title)
+{
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="<?php echo asset('style/style.css'); ?>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title><?php echo htmlspecialchars($title); ?></title>
+  <style>
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navigation {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .navigation li {
+      margin-left: 20px;
+    }
+    .user-info {
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><?php echo htmlspecialchars($title); ?></h1>
+    <div class="nav">
+      <div class="user-info">
+        <p>Ste prihlaseny ako moderator.</p>
+      </div>
+      <ul class="navigation">
+        <li><a href="<?php echo url('/logout'); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        // zatial tento logout nefunguje
+      </ul>
+    </div>
+  </header>
+<?php
+}
+
+// header for admin
+function make_header_admin($title)
+{
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="<?php echo asset('style/style.css'); ?>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title><?php echo htmlspecialchars($title); ?></title>
+  <style>
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navigation {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .navigation li {
+      margin-left: 20px;
+    }
+    .user-info {
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><?php echo htmlspecialchars($title); ?></h1>
+    <div class="nav">
+      <div class="user-info">
+        <p>Ste prihlaseny ako admin.</p>
+      </div>
+      <ul class="navigation">
+        <li><a href="<?php echo url('/logout'); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        // zatial tento logout nefunguje
+      </ul>
     </div>
   </header>
 <?php
@@ -165,18 +239,17 @@ function make_footer()
         </div>
         <!-- Fun Section -->
         <div>
-            <h2 style="margin-bottom: 10px;">KAMO IDK ČO PÍSAŤ UŽ:</h2>
-            <p>IIS PROJEKT JE FAKT SUPER</p>
-            <p>KIKO GRECNAR</p>
-            <p>RUDO BAUGI</p>
-            <p>JURO GERGY</p>
-            <p>IIS PROJEKT JE FAKT SUPER</p>
+            <h2 style="margin-bottom: 10px;">ODKAZY NA SOCIÁLNE SIETE:</h2>
+            <p><a href="https://www.youtube.com" class="social-link"><i class="fab fa-youtube"></i> NÁŠ YOUTUBE</a></p>
+            <p><a href="https://www.instagram.com" class="social-link"><i class="fab fa-instagram"></i> NÁŠ INSTAGRAM</a></p>
+            <p><a href="https://www.facebook.com" class="social-link"><i class="fab fa-facebook"></i> NÁŠ FACEBOOK</a></p>
+            <p><a href="https://www.reddit.com" class="social-link"><i class="fab fa-reddit"></i> NÁŠ REDDIT</a></p>
+            <p><a href="https://www.twitter.com" class="social-link"><i class="fab fa-twitter"></i> NÁŠ TWITTER</a></p>
         </div>
     </div>
     <div style="background-color: #8C8C8C; text-align: center; margin-top: 20px;">
         <h2>Ďakujeme Vám za návštevu našej stránky!</h2>
-        <h3> COPYRIGHT &copy; KELIGAO, RODO, GOERGY 2024 Czech Republic.</h3>
-    </div>
+        <h3> Copyright <span class="large-copy">&copy;</span> Zelňak official Brno, Czech Republic 2024.</h3>    </div>
   </footer>
 </body>
 </html>
