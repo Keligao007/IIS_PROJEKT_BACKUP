@@ -17,6 +17,14 @@ class RegistrovanyUzivatelController extends Controller
         return view('user/user');
     }
 
+    public function destroy($id)
+    {
+        $nabidka = Nabidka::findOrFail($id);
+        $nabidka->delete();
+
+        return redirect()->route('zobrazit_nabidky')->with('success', 'Ponuka bola úspešne zmazaná.');
+    }
+    
     public function navrhnut_kategoriu() {
         $kategorie = KategoriaPlodin::whereIn('id', [2, 3])->get();
 
@@ -174,7 +182,4 @@ class RegistrovanyUzivatelController extends Controller
 
         return redirect()->route('zobrazit_nabidky')->with('success', 'Ponuka bola úspešne upravená.');
     }
-    //TODO
-    // neregistrovany uzivatel moze pozerat ceny a produkty
-
 }

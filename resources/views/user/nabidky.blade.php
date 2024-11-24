@@ -4,19 +4,12 @@
 @section('header', 'nabidky')
 
 @section('content')
-<div class="container">
-    <h1 class="center-text">NABIDKY</h1>
+<div class="show-nabidky-container">
 
-    @if (Auth::check())
-        <h2 class="center-text">SI TU</h2>
-    @else
-        <h2 class="center-text">NEPRIHLASENY</h2>
-    @endif
-
-    <h2 class="center-text">Zoznam všetkých ponúk</h2>
+    <h2 class="show-nabidky-section-title">Zoznam všetkých ponúk</h2>
 
     @if ($nabidky->isEmpty())
-        <p class="center-text">Žiadne ponuky na zobrazenie.</p>
+    <p class="center-text">Žiadne ponuky na zobrazenie.</p>
     @else
         <div class="table-container">
             <table class="styled-table">
@@ -25,7 +18,6 @@
                         <th>ID</th>
                         <th>Meno</th>
                         <th>Atribúty</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,4 +39,7 @@
         </div>
     @endif
 </div>
+
+<!-- doplnit ze pri cislach nech je aj meno atributu. -->
+
 @endsection

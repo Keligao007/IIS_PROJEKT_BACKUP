@@ -127,3 +127,5 @@ Route::get('/user/zobrazit_nabidky', [RegistrovanyUzivatelController::class, 'zo
 Route::get('/nabidka/{id}/edit', [RegistrovanyUzivatelController::class, 'nabidka_edit'])->name('nabidka_edit');
 
 Route::post('/nabidka/{id}/update', [RegistrovanyUzivatelController::class, 'nabidka_update'])->name('nabidka_update');
+
+Route::delete('/nabidka/{id}', [RegistrovanyUzivatelController::class, 'destroy'])->name('nabidka_delete');

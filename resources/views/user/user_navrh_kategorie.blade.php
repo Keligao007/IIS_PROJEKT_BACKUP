@@ -3,28 +3,11 @@
 @section('title', 'Navrh kategorie')
 @section('header', 'Navrh kategorie')
 
-
-<?php
-if (isset($_SESSION['user']))
-{
-    //echo "Current user: <strong>" . $_SESSION['user'] . '</strong>';
-    //echo '<p><a href="admin.php">Go to admin page</a>';
-    //echo '<p><a href="logout.php">Logout</a>';
-    ?><h1>SI TU</h1><?php
-}
-else
-{
-    ?><h1>NEPRIHLASENY</h1><?php
-}
-?>
-
 @section('content')
-    <!-- <h2>vitajte na nasej stranke</h2> -->
-     <h1>Registrovany uzivatel</h1>
-
-     <div class="container">
+<div class="login-page">
+    <div class="login-container">
         <h2>Navrhnúť novú kategóriu</h2>
-        <form action="{{ route('ulozit_navrh_kategorie') }}" method="POST">
+        <form action="{{ route('ulozit_navrh_kategorie') }}" method="POST" onsubmit="return validateForm()">
             @csrf
             <!-- Meno novej kategórie -->
             <div class="mb-3">
@@ -34,28 +17,69 @@ else
 
             <!-- Výber typu kategórie -->
             <div class="mb-3">
-                <label for="parent_kategoria_id" class="form-label">Typ kategórie</label>
-                <select name="parent_kategoria_id" id="parent_kategoria_id" class="form-control" required>
-                    <option value="">-- Vyber typ kategórie --</option>
-                    @foreach($kategorie as $kategoria)
-                        <option value="{{ $kategoria->id }}">{{ $kategoria->meno }}</option>
-                    @endforeach
-                </select>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Výber</th>
+                            <th style="padding-left: 40px;">Názov kategórie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($kategorie as $kategoria)
+                            <tr>
+                                <td>
+                                    <input type="radio" name="parent_kategoria_id" value="{{ $kategoria->id }}" id="kategoria_{{ $kategoria->id }}" class="form-check-input" required>
+                                </td>
+                                <td>
+                                    <label for="kategoria_{{ $kategoria->id }}" class="form-check-label" style="padding-left: 40px;">{{ $kategoria->meno }}</label>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
 
             <!-- Výber atribútov -->
             <div class="mb-3">
-                <label for="atributy" class="form-label">Atribúty</label>
-                @foreach($atributy as $atribut)
-                    <div class="form-check">
-                        <input type="checkbox" name="atributy[]" value="{{ $atribut->id }}" id="atribut_{{ $atribut->id }}" class="form-check-input">
-                        <label for="atribut_{{ $atribut->id }}" class="form-check-label">{{ $atribut->nazov }}</label>
-                    </div>
-                @endforeach
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Výber</th>
+                            <th style="padding-left: 40px;">Názov atribútu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($atributy as $atribut)
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="atributy[]" value="{{ $atribut->id }}" id="atribut_{{ $atribut->id }}" class="form-check-input">
+                                </td>
+                                <td>
+                                    <label for="atribut_{{ $atribut->id }}" class="form-check-label" style="padding-left: 40px;">{{ $atribut->nazov }}</label>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
 
             <!-- Tlačidlo na odoslanie -->
             <button type="submit" class="btn btn-primary">Navrhnúť kategóriu</button>
         </form>
     </div>
+</div>
+
+<script>
+function validateForm() {
+    const checkboxes = document.querySelectorAll('input[name="atributy[]"]');
+    let checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
+
+    if (!checkedOne) {
+        alert('Musíte vybrať aspoň jeden atribút.');
+        return false;
+    }
+    return true;
+}
+</script>
+
 @endsection

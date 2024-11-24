@@ -1,46 +1,20 @@
 @extends('layout.user_layout')
 
 @section('content')
-<h1>Moje nabídky</h1>
 
-<!-- <div class="container">
-    <h1>Moje Ponuky</h1>
-
-    @if ($nabidky->isEmpty())
-        <p>Nemáte žiadne ponuky.</p>
-    @else
-        @foreach ($nabidky as $nabidka)
-            <div class="card mb-3">
-                <div class="card-header">
-                    <strong>{{ $nabidka->meno }}</strong>
-                </div>
-                <div class="card-body">
-                    <ul>
-                        @foreach ($nabidka->atributy as $atribut)
-                            <li>
-                                <strong>{{ $atribut->atribut->nazov }}:</strong> {{ $atribut->hodnota }}
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        @endforeach
-    @endif
-</div> -->
-
-<div class="container">
-    <h1>Moje Ponuky</h1>
+<div class="show-nabidky-container">
+    <h2 class="show-nabidky-section-title">Moje Ponuky</h2>
 
     @if ($nabidky->isEmpty())
-        <p>Nemáte žiadne ponuky.</p>
+        <p class="show-nabidky-no-offers">Nemáte žiadne ponuky.</p>
     @else
         @foreach ($nabidky as $nabidka)
-            <div class="card mb-3">
-                <div class="card-header">
+            <div class="show-nabidky-card mb-3">
+                <div class="show-nabidky-card-header">
                     <strong>{{ $nabidka->meno }}</strong>
                 </div>
-                <div class="card-body">
-                    <ul>
+                <div class="show-nabidky-card-body">
+                    <ul class="show-nabidky-attributes-list">
                         @foreach ($nabidka->atributy as $atribut)
                             <li>
                                 <strong>{{ $atribut->atribut->nazov }}:</strong> {{ $atribut->hodnota }}
@@ -49,9 +23,18 @@
                     </ul>
 
                     <!-- Tlačidlo pre úpravu ponuky -->
-                    <a href="{{ route('nabidka_edit', $nabidka->id) }}" class="btn btn-primary">
+                    <a href="{{ route('nabidka_edit', $nabidka->id) }}" class="btn-nabidka">
                         Upraviť ponuku
                     </a>
+
+                    <!-- Tlačidlo pre zmazanie ponuky -->
+                    <form action="{{ route('nabidka_delete', $nabidka->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" style="max" class="btn-nabidka-delete" onclick="return confirm('Ste si istí, že chcete zmazať túto ponuku?')">
+                            Zmazať ponuku
+                        </button>
+                    </form>
                 </div>
             </div>
         @endforeach

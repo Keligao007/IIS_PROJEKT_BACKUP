@@ -1,43 +1,30 @@
+<?php include_once resource_path('library/header_footer.php'); ?>
+
 <!DOCTYPE html> 
 <html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/style.style.css">
-        <title>@yield('title', 'Predvolený nadpis')</title>
-    </head>
-  <body>
-        <head>
-            <h1>@yield('header', 'Predvolený hlavný nadpis stránky')</h1>
-            <!-- <h1>LAYOUT STRANKA</h1> -->
-        </head>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('style/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>@yield('title', 'Admin')</title>
+</head>
+<body>
+    <?php make_header_admin('Admin'); ?>
 
-        <!-- @include('layout.nav') -->
-
-        <header>
+    <header>
         <div class="nav">
-            <ul class="">
-                <li><a>Meno</a></li>
-                <li><a href="<?php echo url('/'); ?>">Odhlásiť</a></li>
-                <!-- totdo, ked sa odhlasi tak nech je odhlaseny -->
-                 <!-- <h2>Tento list je header, treba naformatovat</h2> -->
-            </ul>
+            <h2>Admin može spravovať uživateľov, spravovať moderátorov, a dalšie. Pre začiatok prosím stlačte jedno z dvoch tlačidiel.</h2>
         </div>
-        </header>
+    </header>
 
-        <main>
+    <main>
+        <section style="margin: 20px; padding: 20px;">
+            @yield('content')
+        </section>
+    </main>
 
-            <section>
-                @yield('content')
-            </section>
-
-        </main>
-
-        <footer> 
-            
-            &copy; KELIGAO
-
-        </footer>
-    </body>
+    <?php make_footer(); ?>
+</body>
 </html>
