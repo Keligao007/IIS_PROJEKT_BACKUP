@@ -18,6 +18,7 @@
                         <th>ID</th>
                         <th>Meno</th>
                         <th>Atribúty</th>
+                        <th>Akcia</th> <!-- Nový stĺpec -->
                     </tr>
                 </thead>
                 <tbody>
@@ -26,14 +27,34 @@
                             <td>{{ $nabidka->id }}</td>
                             <td>{{ $nabidka->meno }}</td>
                             <td>
-                                <ul class="styled-list">
-                                    @foreach ($nabidka->nabidka_atribut as $atribut)
-                                        <li>{{ $atribut->nazov }}: {{ $atribut->hodnota }}</li>
+                                <ul>
+                                    @foreach ($nabidka->nabidka_atribut as $nabidkaAtribut)
+                                        <li>{{ $nabidkaAtribut->atribut->nazov }}: {{ $nabidkaAtribut->hodnota }}</li>
                                     @endforeach
                                 </ul>
                             </td>
+                            <td>
+                                <!-- Tlačidlo Pridať do košíka s množstvom -->
+                                <form method="POST" action="{{ route('store_order', $nabidka->id) }}">
+                                    @csrf
+                                    <label for="mnozstvo-{{ $nabidka->id }}">Množstvo:</label>
+                                    <input type="number" name="mnozstvo" id="mnozstvo-{{ $nabidka->id }}" min="1" step="1" required>
+                                    <button type="submit">Objednať</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                 </tbody>
             </table>
         </div>

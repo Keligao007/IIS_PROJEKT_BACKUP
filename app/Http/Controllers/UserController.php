@@ -33,11 +33,12 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        //echo 'som tu';
-        // Validate data
+        // Validate data with a custom error message for unique login
         $validatedData = $request->validate([
             'login' => 'required|string|max:100|unique:registrovany_uzivatel,login',
             'password' => 'required|string|min:6',
+        ], [
+            'login.unique' => 'Zadaný login už existuje. Zvoľte si prosím iný.', // Custom error message
         ]);
 
         // Create and save the user
@@ -48,10 +49,7 @@ class UserController extends Controller
         $user->save();
 
         Auth::login($user);
-        // return view('common');
-        return redirect()->route('user');
-
-        // return '<h1> user added </h1>';
+        return redirect()->route('user')->with('success', 'Užívateľ bol úspešne pridaný.');
     }
 
     public function store_moderator(Request $request)
@@ -61,6 +59,8 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'login' => 'required|string|max:100|unique:registrovany_uzivatel,login',
             'password' => 'required|string|min:6',
+        ], [
+            'login.unique' => 'Zadaný login už existuje. Zvoľte si prosím iný.', // Custom error message
         ]);
 
         // Create and save the user
@@ -70,7 +70,7 @@ class UserController extends Controller
         $user->type = 'moderator';
         $user->save();
 
-        Auth::login($user);
+        //Auth::login($user);
         return redirect()->route('show_moderators')->with('success', 'Moderator added successfully');
 
         // return '<h1> user added </h1>';

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ObjednavkaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModeratorController;
@@ -129,3 +130,8 @@ Route::get('/nabidka/{id}/edit', [RegistrovanyUzivatelController::class, 'nabidk
 Route::post('/nabidka/{id}/update', [RegistrovanyUzivatelController::class, 'nabidka_update'])->name('nabidka_update');
 
 Route::delete('/nabidka/{id}', [RegistrovanyUzivatelController::class, 'destroy'])->name('nabidka_delete');
+
+// routy pre objednavku
+
+Route::post('/user/prechadzat_nabidky/objednat/{nabidkaId}', [ObjednavkaController::class, 'store_order'])->name('store_order');
+
