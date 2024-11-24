@@ -18,6 +18,10 @@ class RegistrovanyUzivatelController extends Controller
     public function vlozit_nabidku() {
         
     }
+
+    public function zobrazit_nabidky() {
+        return view('user/zobrazit_nabidky');
+    }
     //TODO 
     // neregistrovany uzivatel moze pozerat ceny a produkty
 

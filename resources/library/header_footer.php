@@ -65,10 +65,15 @@ function make_header_unlogin($title)
     <h1><?php echo htmlspecialchars($title); ?></h1>
     <div class="nav">
       <ul class="navigation">
-        <li><a href="<?php echo url('/'); ?>"><i class="fas fa-home"></i> Home</a></li>  
-        <li><a href="<?php echo url('/register'); ?>"><i class="fas fa-user-plus"></i> Register</a></li>
+        <li><a href="<?php echo url('/'); ?>"><i class="fas fa-home"></i> Domov</a></li>  
+        <li><a href="<?php echo url('/register'); ?>"><i class="fas fa-user-plus"></i> Registrácia</a></li>
         <li><a href="<?php echo url('/log_in'); ?>"><i class="fas fa-sign-in-alt"></i> LogIn</a></li>
       </ul>
+      <div class="center-text">
+          <?php
+              echo "<h3>Nie ste prihlásený. Prosím buď sa prihláste, alebo registrujte!</h3>";
+          ?>
+      </div>
     </div>
   </header>
 <?php
@@ -91,19 +96,34 @@ function make_header_login($title)
 <body>
   <header>
     <h1><?php echo htmlspecialchars($title); ?></h1>
-    <div class="nav">
+    <nav class="nav">
       <ul class="navigation">
-        <li><a href="<?php echo url('/'); ?>"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="<?php echo url('/edit'); ?>"><i class="fas fa-user-edit"></i> Edit Profile</a></li>
-        <li><a href="<?php echo url('/logout'); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        <li><a href="<?php echo url('/'); ?>"><i class="fas fa-home"></i> Domov</a></li>
+        <li><a href="<?php echo route('editProfile'); ?>"><i class="fas fa-user-edit"></i> Edit Profilu</a></li>
+        <li>
+          <form action="<?php echo route('logout'); ?>" method="post" style="display: inline;">
+            <?php echo csrf_field(); ?>
+            <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer; font: inherit; text-decoration: none;">
+              <i class="fas fa-sign-out-alt"></i> Odhlásiť sa
+            </button>
+          </form>
+        </li>
+        <?php if (Auth::check()): ?>
+          <li><a href="<?php echo route('samozber.index'); ?>" class="btn btn-primary"><i class="fas fa-list"></i> Zobraziť samozbery</a></li>
+          <li><a href="<?php echo route('samozber.create'); ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Vytvoriť samozber</a></li>
+          <li><a href="<?php echo route('navrhnut_kategoriu'); ?>"><i class="fas fa-user-plus"></i> Navrhnut kategoriu</a></li>
+          <li><a href="<?php echo route('vlozit_nabidku'); ?>"><i class="fas fa-sign-in-alt"></i> Vlozit nabidku</a></li>
+          <li><a href="<?php echo route('prechadzat_nabidky'); ?>"><i class="fas fa-sign-in-alt"></i> Prechadzat nabidky (vsetky)</a></li>
+          <li><a href="<?php echo route('zobrazit_nabidky'); ?>"><i class="fas fa-sign-in-alt"></i> Spravovat svoje nabidky (len jeho)</a></li>
+        <?php endif; ?>
       </ul>
       <div class="center-text">
           <?php
               // Display the user's login name
-              echo "<h2>You are logged in as user: " . htmlspecialchars(Auth::user()->login) . "</h2>";
+              echo "<h3>Ste prihlásený ako: " . htmlspecialchars(Auth::user()->login) . "</h3>";
           ?>
       </div>
-    </div>
+    </nav>
   </header>
 <?php
 }
@@ -149,7 +169,14 @@ function make_header_moderator($title)
         <p>Ste prihlaseny ako moderator.</p>
       </div>
       <ul class="navigation">
-        <li><a href="<?php echo url('/logout'); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      <li>
+          <form action="<?php echo route('logout'); ?>" method="post" style="display: inline;">
+            <?php echo csrf_field(); ?>
+            <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer; font: inherit; text-decoration: none;">
+              <i class="fas fa-sign-out-alt"></i> Odhlásiť sa
+            </button>
+          </form>
+        </li>
         // zatial tento logout nefunguje
       </ul>
     </div>
@@ -198,7 +225,14 @@ function make_header_admin($title)
         <p>Ste prihlaseny ako admin.</p>
       </div>
       <ul class="navigation">
-        <li><a href="<?php echo url('/logout'); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      <li>
+          <form action="<?php echo route('logout'); ?>" method="post" style="display: inline;">
+            <?php echo csrf_field(); ?>
+            <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer; font: inherit; text-decoration: none;">
+              <i class="fas fa-sign-out-alt"></i> Odhlásiť sa
+            </button>
+          </form>
+        </li>
         // zatial tento logout nefunguje
       </ul>
     </div>

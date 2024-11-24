@@ -90,7 +90,7 @@ class LoginController extends Controller
     public function editProfile()
     {
         $user = Auth::user();
-        return view('profile.edit', compact('user'));
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -117,6 +117,7 @@ class LoginController extends Controller
     Auth::login($user);
     
     // Presmerovanie na hlavnú stránku s úspešnou správou
-    return redirect('/')->with('success', 'Profil bol úspešne aktualizovaný.');
+    // return redirect('/')->with('success', 'Profil bol úspešne aktualizovaný.');
+    return redirect()->route('user')->with('success', 'Profil bol úspešne aktualizovaný.');
     }       
 }

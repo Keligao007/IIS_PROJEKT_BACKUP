@@ -1,6 +1,6 @@
 <!-- resources/views/samozber/create.blade.php -->
 
-@extends('layout.layout')
+@extends('layout.user_layout')
 
 @section('content')
 <div class="container">

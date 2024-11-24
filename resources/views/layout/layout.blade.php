@@ -23,11 +23,13 @@
     ?>
 
     <main>
+        <!--- nabídky --->
         <section>
             @yield('content')
         </section>
-
-        <section>
+    
+        <!--- slider --->
+        <section style="margin-top: 20px; margin-bottom: 20px;">
             <div class="slider">
                 <div class="slides">
                     <img src="{{ asset('images/b.jpg') }}" alt="Image 1">
@@ -43,6 +45,7 @@
             </div>
         </section>
 
+        <!--- o projekte --->
         <section class="project-description">
             <h2>O našom projekte</h2>
             <p>
@@ -52,9 +55,6 @@
             </p>
         </section>
 
-        <section>
-            <a href="{{ route('suggestions.create') }}" class="btn btn-primary">Make a Suggestion</a>
-        </section>
         <section>
             <a href="{{ route('samozber.index') }}" class="btn btn-primary">View Samozber List</a>
         </section>

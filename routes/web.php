@@ -28,11 +28,11 @@ Route::post('/register', [UserController::class, 'store'])->name('register');
 // Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
-
+/*
 Route::get('/profile/edit', [LoginController::class, 'editProfile'])->name('editProfile')->middleware('auth');
 
 Route::post('/profile/update', [LoginController::class, 'updateProfile'])->name('updateProfile')->middleware('auth');
-
+*/
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/edit', [UserController::class, 'edit'])->name('edit');
@@ -40,7 +40,7 @@ Route::get('/edit', [UserController::class, 'edit'])->name('edit');
 Route::post('/edit', [UserController::class, 'update'])->name('update');
 
 // this will ensure that only "logged in users" can make samozbery   
-
+/*
 Route::get('/samozber/create', [SamozberController::class, 'create'])->name('samozber.create');
 
 Route::post('/samozber', [SamozberController::class, 'store'])->name('samozber.store');
@@ -48,7 +48,7 @@ Route::post('/samozber', [SamozberController::class, 'store'])->name('samozber.s
 Route::get('/samozber', [SamozberController::class, 'index'])->name('samozber.index');
 
 Route::post('/samozber/add/{id}', [SamozberController::class, 'register'])->name('samozber.register');
-
+*/
 // registrovane routy
 
 Route::get('/suggestions/create', [RegisteredController::class, 'create'])->name('suggestions.create');
@@ -106,3 +106,13 @@ Route::get('/user/navrh_kategorie', [RegistrovanyUzivatelController::class, 'nav
 Route::get('/user/vlozit_nabidku', [RegistrovanyUzivatelController::class, 'vlozit_nabidku'])->name('vlozit_nabidku');
 
 Route::get('/user/prechadzat_nabidky', [ZakaznikController::class, 'prechadzat_nabidky'])->name('prechadzat_nabidky');
+
+Route::get('/user/samozber/create', [SamozberController::class, 'create'])->name('samozber.create');
+Route::post('/user/samozber', [SamozberController::class, 'store'])->name('samozber.store');
+Route::get('/user/samozber', [SamozberController::class, 'index'])->name('samozber.index');
+Route::post('/user/samozber/add/{id}', [SamozberController::class, 'register'])->name('samozber.register');
+
+Route::get('/user/edit', [LoginController::class, 'editProfile'])->name('editProfile')->middleware('auth');
+Route::post('/user/edit', [LoginController::class, 'updateProfile'])->name('updateProfile')->middleware('auth');
+
+Route::get('/user/zobrazit_nabidky', [RegistrovanyUzivatelController::class, 'zobrazit_nabidky'])->name('zobrazit_nabidky');

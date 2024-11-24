@@ -10,7 +10,7 @@ class SamozberController extends Controller
 {
     public function create() // vytvorenie samozberu
     {
-        return view('samozber.create');
+        return view('user.create');
     }
 
     public function index() // zobrazenie vsetkych samozberov
@@ -18,7 +18,7 @@ class SamozberController extends Controller
         $user = Auth::user();
         $samozbery = Samozber::with(['nabidka', 'farmar'])->get();
         $registeredSamozbery = $user && $user->samozberSeznam ? $user->samozberSeznam->pluck('id_samozber')->toArray() : [];
-        return view('samozber.index', compact('samozbery', 'registeredSamozbery'));
+        return view('user.index', compact('samozbery', 'registeredSamozbery'));
     }
 
     public function register($id) // registracia na samozber
