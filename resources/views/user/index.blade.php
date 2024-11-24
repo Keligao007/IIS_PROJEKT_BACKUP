@@ -22,8 +22,8 @@
                         <tr>
                             <td>{{ $samozber->miesto }}</td>
                             <td>{{ $samozber->datum_a_cas }}</td>
-                            <td>{{ $samozber->id_nabidka }}</td> <!-- id nabidky, ktorej sa to kona  -->
-                            <td>{{ $samozber->id_uzivatel }}</td> <!-- ten co ho organizuje -->
+                            <td>{{ $samozber->id_nabidka }}</td>
+                            <td>{{ $samozber->id_uzivatel }}</td>
                             <td>
                                 @if(!in_array($samozber->id, $registeredSamozbery))
                                     <form action="{{ route('samozber.register', $samozber->id) }}" method="POST">

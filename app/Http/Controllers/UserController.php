@@ -48,7 +48,8 @@ class UserController extends Controller
         $user->save();
 
         Auth::login($user);
-        return view('common');
+        // return view('common');
+        return redirect()->route('user');
 
         // return '<h1> user added </h1>';
     }
