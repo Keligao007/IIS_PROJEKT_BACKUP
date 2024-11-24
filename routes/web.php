@@ -5,7 +5,9 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModeratorController;
+use App\Http\Controllers\RegistrovanyUzivatelController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ZakaznikController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
 
@@ -74,3 +76,13 @@ Route::delete('/admin/moderators/{id}', [UserController::class, 'delete_moderato
     // add moderator
         
 Route::post('/admin/moderators', [UserController::class, 'store_moderator'])->name('store_moderator');
+
+
+// Uzivatel routa
+Route::get('/user', [RegistrovanyUzivatelController::class, 'user'])->name('user');
+
+Route::get('/user/navrh_kategorie', [RegistrovanyUzivatelController::class, 'navrhnut_kategoriu'])->name('navrhnut_kategoriu');
+
+Route::get('/user/vlozit_nabidku', [RegistrovanyUzivatelController::class, 'vlozit_nabidku'])->name('vlozit_nabidku');
+
+Route::get('/user/prechadzat_nabidky', [ZakaznikController::class, 'prechadzat_nabidky'])->name('prechadzat_nabidky');

@@ -44,7 +44,8 @@ class LoginController extends Controller
             // return redirect()->intended('/');
             if ($user->type === 'regular') {
                 // Presmerovanie na stránku pre bežných používateľov
-                return redirect()->route('index'); 
+                // return redirect()->route('index'); 
+                return redirect()->route('user'); 
 
             } elseif ($user->type === 'moderator') {
 
