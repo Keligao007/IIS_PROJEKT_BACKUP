@@ -10,8 +10,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZakaznikController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
-
-
+use App\Http\Controllers\SamozberController;
+use App\Http\Controllers\RegisteredController;
 
 
 Route::get('/',[HomeController::class, 'index'])->name('index');
@@ -29,11 +29,31 @@ Route::post('/register', [UserController::class, 'store'])->name('register');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
+Route::get('/profile/edit', [LoginController::class, 'editProfile'])->name('editProfile')->middleware('auth');
+
+Route::post('/profile/update', [LoginController::class, 'updateProfile'])->name('updateProfile')->middleware('auth');
+
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/edit', [UserController::class, 'edit'])->name('edit');
 
 Route::post('/edit', [UserController::class, 'update'])->name('update');
+
+// this will ensure that only "logged in users" can make samozbery   
+
+Route::get('/samozber/create', [SamozberController::class, 'create'])->name('samozber.create');
+
+Route::post('/samozber', [SamozberController::class, 'store'])->name('samozber.store');
+
+Route::get('/samozber', [SamozberController::class, 'index'])->name('samozber.index');
+
+Route::post('/samozber/add/{id}', [SamozberController::class, 'register'])->name('samozber.register');
+
+// registrovane routy
+
+Route::get('/suggestions/create', [RegisteredController::class, 'create'])->name('suggestions.create');
+
+Route::post('/suggestions', [RegisteredController::class, 'store'])->name('suggestions.store');
 
 // Moderator routy
 Route::get('/moderator', [ModeratorController::class, 'moderator'])->name('moderator');
