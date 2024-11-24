@@ -26,7 +26,17 @@ class NavrhKategorie extends Model
     // Vztah k NavrhKategorieAtribut
     public function navrhKategorieAtribut()
     {
-        return $this->hasMany(NavrhKategorieAtribut::class, 'id_navrh');
+        return $this->hasMany(NavrhKategorieAtribut::class, 'id_navrh_kategorie');
+    }
+
+    public function atributy()
+    {
+        return $this->hasMany(NavrhKategorieAtribut::class, 'id_navrh_kategorie');
+    }
+
+    public function parent_kategoria()
+    {
+        return $this->belongsTo(KategoriaPlodin::class, 'parent_kategoria_id');
     }
 
     public $timestamps = true;

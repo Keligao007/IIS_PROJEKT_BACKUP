@@ -28,7 +28,7 @@ class Atribut extends Model
     }
 
     // Vztah k NavrhKategorieAtribut
-    public function navrhKategorieAtribut()
+    public function navrh_kategorie_atribut()
     {
         return $this->hasMany(NavrhKategorieAtribut::class, 'id_atribut');
     }

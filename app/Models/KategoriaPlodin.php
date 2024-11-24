@@ -45,5 +45,10 @@ class KategoriaPlodin extends Model
         return $this->belongsToMany(Atribut::class, 'kategoria_plodin_atribut', 'id_kategoria_plodin', 'id_atribut');
     }
 
+    public function navrhy()
+    {
+        return $this->hasMany(NavrhKategorie::class, 'parent_kategoria_id');
+    }
+
     public $timestamps = true;
 }

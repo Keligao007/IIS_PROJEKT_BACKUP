@@ -28,5 +28,13 @@ class push_atributes extends Seeder
         Atribut::create([
             'nazov' => 'mnozstvo/kus' // id 4
         ]);
+
+        Atribut::create([
+            'nazov' => 'barva' // id 5
+        ]);
+
+        Atribut::create([
+            'nazov' => 'krajina puvodu' // id 6
+        ]);
     }
 }

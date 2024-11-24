@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_nabidka');
             $table->unsignedBigInteger('id_atribut');
-            $table->string('value');
+            $table->string('hodnota');
         });
     }
 
