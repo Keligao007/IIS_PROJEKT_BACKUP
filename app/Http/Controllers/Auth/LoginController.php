@@ -42,7 +42,18 @@ class LoginController extends Controller
 
             // Presmerovanie na stránku dashboard
             // return redirect()->intended('/');
-            return redirect()->route('index');
+            if ($user->type === 'regular') {
+                // Presmerovanie na stránku pre bežných používateľov
+                return redirect()->route('index'); 
+
+            } elseif ($user->type === 'moderator') {
+
+                return redirect()->route('moderator');
+
+            } elseif ($user->type === 'admin') {
+
+                return redirect()->route('admin'); // Uisti sa, že máš route 'moderator'
+            }
         }
 
         // Prihlásenie zlyhalo, vrátime späť s chybovou hláškou
