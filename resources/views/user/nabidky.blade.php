@@ -39,7 +39,7 @@
                                     @csrf
                                     <label for="mnozstvo-{{ $nabidka->id }}">Množstvo:</label>
                                     <input type="number" name="mnozstvo" id="mnozstvo-{{ $nabidka->id }}" min="1" step="1" required>
-                                    <button type="submit">Objednať</button>
+                                    <button style="margin-top: 20px;" type="submit" class="btn btn-order">Objednať</button>
                                 </form>
                             </td>
                         </tr>

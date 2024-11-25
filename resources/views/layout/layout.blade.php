@@ -12,13 +12,17 @@
     <title>@yield('title', 'Home')</title>
 </head>
 <body>
-    <?php make_header('ZATIAL NECHAVAM TENTO HEADER ABY SME MOHLI SKUSAT ADMINA A MODERATORA'); ?>
+
+    <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
+        <img src="{{ asset('images/logo.png') }}" alt="ZELŇAK Logo" style="width: 90px; height: 90px;">
+        <h1 style="margin-left: 20px;">Vitajte na našej stránke ZELŇAK OFFICIAL, kde sa dajú zakúpiť produkty od lokálnych farmárov.</h1>
+    </div> 
 
     <?php
     if (Auth::check()) {
-        make_header_login('Vitajte na našej stránke ZELŇAK OFFICIAL');
+        make_header_login('');
     } else {
-        make_header_unlogin('Vitajte na našej stránke ZELŇAK OFFICIAL');
+        make_header_unlogin('');
     }
     ?>
 
@@ -53,13 +57,6 @@
                 Poskytuje možnosť organizovať samozbery. Obsahuje rôzne užívateľské role: administrátor, moderátor, registrovaný a neregistrovaný používateľ.</li>
                 Prosím dbajte na to, že ide o edukačný projekt, nie komerčnú platformu.
             </p>
-        </section>
-
-        <section>
-            <a href="{{ route('samozber.index') }}" class="btn btn-primary">View Samozber List</a>
-        </section>
-        <section>
-            <a href="{{ route('samozber.create') }}" class="btn btn-primary">Add samozber</a>
         </section>
     </main>
 

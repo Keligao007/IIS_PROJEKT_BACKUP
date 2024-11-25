@@ -24,8 +24,8 @@
             @endforeach
 
             <!-- Tlačidlá -->
-            <button type="submit" class="approve-button" style="background-color: green";>Uložiť</button>
-            <button href="{{ url()->previous() }}" class="approve-button" style="background-color: gray">Späť</button>
+            <button type="submit" class="approve-button" style="background-color: green; margin-top: 20px; margin-bottom: 20px";>Uložiť</button>
+            <a href="{{ url()->previous() }}" class="approve-button" style="background-color: gray; margin-top: 20px; margin-bottom: 20px; text-decoration: none; padding: 10px 15px; color: white; border-radius: 5px;">Späť</a>
         </form>
     </div>
 </div>

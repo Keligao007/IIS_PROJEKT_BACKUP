@@ -98,7 +98,7 @@ function make_header_login($title)
     <h1><?php echo htmlspecialchars($title); ?></h1>
     <nav class="nav">
       <ul class="navigation">
-        <li><a href="<?php echo url('/'); ?>"><i class="fas fa-home"></i> Domov</a></li>
+        <li><a href="<?php echo url('/user'); ?>"><i class="fas fa-home"></i> Domov</a></li>
         <li><a href="<?php echo route('editProfile'); ?>"><i class="fas fa-user-edit"></i> Edit Profilu</a></li>
         <li>
           <form action="<?php echo route('logout'); ?>" method="post" style="display: inline;">
@@ -109,12 +109,12 @@ function make_header_login($title)
           </form>
         </li>
         <?php if (Auth::check()): ?>
-          <li><a href="<?php echo route('samozber.index'); ?>" class="btn btn-primary"><i class="fas fa-list"></i> Zobraziť samozbery</a></li>
-          <li><a href="<?php echo route('samozber.create'); ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Vytvoriť samozber</a></li>
-          <li><a href="<?php echo route('navrhnut_kategoriu'); ?>"><i class="fas fa-user-plus"></i> Navrhnut kategoriu</a></li>
-          <li><a href="<?php echo route('vlozit_nabidku'); ?>"><i class="fas fa-sign-in-alt"></i> Vlozit nabidku</a></li>
-          <li><a href="<?php echo route('prechadzat_nabidky'); ?>"><i class="fas fa-sign-in-alt"></i> Prechadzat nabidky (vsetky)</a></li>
-          <li><a href="<?php echo route('zobrazit_nabidky'); ?>"><i class="fas fa-sign-in-alt"></i> Spravovat svoje nabidky (len jeho)</a></li>
+            <li><a href="<?php echo route('samozber.index'); ?>"><i class="fas fa-list"></i> Zobraziť samozbery</a></li>
+            <li><a href="<?php echo route('samozber.create'); ?>"><i class="fas fa-plus"></i> Vytvoriť samozber</a></li>
+            <li><a href="<?php echo route('navrhnut_kategoriu'); ?>"><i class="fas fa-user-plus"></i> Navrhnut kategoriu</a></li>
+            <li><a href="<?php echo route('vlozit_nabidku'); ?>"><i class="fas fa-sign-in-alt"></i> Vlozit nabidku</a></li>
+            <li><a href="<?php echo route('prechadzat_nabidky'); ?>"><i class="fas fa-sign-in-alt"></i> Prechadzat nabidky (vsetky)</a></li>
+            <li><a href="<?php echo route('zobrazit_nabidky'); ?>"><i class="fas fa-sign-in-alt"></i> Spravovat svoje nabidky (len jeho)</a></li>
         <?php endif; ?>
       </ul>
       <div class="center-text">

@@ -97,27 +97,37 @@ class LoginController extends Controller
     * Zobrazí formulár pre editáciu profilu.
     */
     public function updateProfile(Request $request)
-    {
+{
     // Ensure the user is authenticated
     $user = Auth::user();
     if (!$user) {
         return redirect()->route('login')->withErrors('You must be logged in to update your profile.');
     }
-    
-    // Validácia údajov
-    $request->validate([
-        'login' => 'required|string|max:255',
+
+    // Validácia údajov s vlastnou chybovou správou pre jedinečný login
+    $validatedData = $request->validate([
+        'login' => 'required|string|max:255|unique:registrovany_uzivatel,login,' . $user->id,
+        'password' => 'nullable|string|min:6|confirmed',
+    ], [
+        'login.unique' => 'Zadaný login už existuje. Zvoľte si prosím iný.', 
+        'password.confirmed' => 'Heslo a potvrdenie hesla sa nezhodujú. Prosím keď chcete zmeniť heslo, zadajte ho dvakrát.',
+        'password.min' => 'Heslo musí mať aspoň 6 znakov.', 
     ]);
 
     // Aktualizácia mena používateľa
-    $user->login = $request->input('login');
+    $user->login = $validatedData['login'];
+
+    // Aktualizácia hesla používateľa, ak je zadané
+    if (!empty($validatedData['password'])) {
+        $user->password = Hash::make($validatedData['password']);
+    }
+
     $user->save();
-    
+
     // Spatne prihlasenie aby zostal prihlaseny
     Auth::login($user);
-    
+
     // Presmerovanie na hlavnú stránku s úspešnou správou
-    // return redirect('/')->with('success', 'Profil bol úspešne aktualizovaný.');
     return redirect()->route('user')->with('success', 'Profil bol úspešne aktualizovaný.');
-    }       
+}       
 }

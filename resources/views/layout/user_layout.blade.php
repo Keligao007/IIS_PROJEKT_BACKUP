@@ -11,6 +11,12 @@
     <title>@yield('title', 'Prihlaseny uzivatel')</title>
 </head>
 <body>
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
+        <img src="{{ asset('images/logo.png') }}" alt="ZELŇAK Logo" style="width: 90px; height: 90px;">
+        <h1 style="margin-left: 20px;">Vitajte na našej stránke ZELŇAK OFFICIAL, kde sa dajú zakúpiť produkty od lokálnych farmárov.</h1>
+    </div> 
+
     <?php make_header_login(''); ?>
 
     <main>

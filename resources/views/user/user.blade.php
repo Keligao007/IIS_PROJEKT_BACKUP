@@ -5,7 +5,7 @@
 
 @section('content')
     <!-- <h2>vitajte na nasej stranke</h2> -->
-     <h1>Registrovany uzivatel</h1>
+     <!-- <h1>Registrovany uzivatel</h1> -->
 
      <!-- <ul class="navigation">
         <li><a href="{{ route('navrhnut_kategoriu') }}"><i class="fas fa-user-plus"></i> Navrhnut kategoriu</a></li>

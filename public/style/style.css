@@ -448,3 +448,73 @@ body{
 .btn-nabidka-delete:hover {
     background-color: #740000;
 }
+
+/* ****************** FORM ****************** */
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 35px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* ****************** OBJEDNAVKA ****************** */
+
+.btn {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-order {
+    background-color: #ff9800; /* Orange color */
+}
+
+.btn-order:hover {
+    background-color: #e68900; /* Darker orange on hover */
+}
+
+/* ****************** ERRORY ****************** */
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.alert-danger ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.alert-danger li {
+    color: #a94442;
+}
