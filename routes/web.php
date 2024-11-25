@@ -118,7 +118,10 @@ Route::post('/user/ulozit_nabidku', [RegistrovanyUzivatelController::class, 'ulo
 Route::get('/user/samozber/create', [SamozberController::class, 'create'])->name('samozber.create');
 Route::post('/user/samozber', [SamozberController::class, 'store'])->name('samozber.store');
 Route::get('/user/samozber', [SamozberController::class, 'index'])->name('samozber.index');
-Route::post('/user/samozber/add/{id}', [SamozberController::class, 'register'])->name('samozber.register');
+// Route::post('/user/samozber/add/{id}', [SamozberController::class, 'register'])->name('samozber.register');
+Route::delete('/samozber/{id}', [SamozberController::class, 'destroy'])->name('samozber.destroy');
+Route::delete('/samozber/unregister/{id}', [SamozberController::class, 'unregister'])->name('samozber.unregister');
+Route::post('/samozber/register/{id}', [SamozberController::class, 'register'])->name('samozber.register');
 
 Route::get('/user/edit', [LoginController::class, 'editProfile'])->name('editProfile')->middleware('auth');
 Route::post('/user/edit', [LoginController::class, 'updateProfile'])->name('updateProfile')->middleware('auth');

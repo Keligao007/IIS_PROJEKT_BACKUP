@@ -21,51 +21,75 @@ class SamozberController extends Controller
     {
         $user = Auth::user(); // Prihlásený používateľ
 
-        // Získaj všetky samozbery, ktoré nevytvoril aktuálny používateľ
-        $samozbery = Samozber::with(['nabidka', 'farmar'])
-            ->where('id_uzivatel', '!=', $user->id)
+        // Získanie samozberov, ktoré vytvoril prihlásený používateľ
+        $userCreatedSamozbery = Samozber::with(['farmar', 'nabidka'])
+            ->where('id_uzivatel', $user->id)
             ->get();
 
-        // Získaj ID samozberov, na ktoré je už používateľ registrovaný
-        $registeredSamozbery = $user && $user->samozberSeznam 
-            ? $user->samozberSeznam->pluck('id_samozber')->toArray() 
-            : [];
+        // Získanie samozberov, ktorých sa používateľ chce zúčastniť (druhá tabuľka)
+        $registeredSamozbery = Samozber::with(['farmar', 'nabidka'])
+            ->whereHas('ucastnici', function ($query) use ($user) {
+                $query->where('id_uzivatel', $user->id);
+            })
+            ->get();
 
-        // Odovzdaj dáta do pohľadu
-        return view('user.index', compact('samozbery', 'registeredSamozbery'));
+        // Samozbery, ktorých sa používateľ neúčastní a ktoré nevytvoril (tretia tabuľka)
+        $otherSamozbery = Samozber::with(['farmar', 'nabidka'])
+            ->where('id_uzivatel', '!=', $user->id)
+            ->whereDoesntHave('ucastnici', function ($query) use ($user) {
+                $query->where('id_uzivatel', $user->id);
+            })
+            ->get();
+
+        return view('user.index', compact('userCreatedSamozbery', 'registeredSamozbery', 'otherSamozbery'));
     }
 
-    public function register($id) // registracia na samozber
+    public function unregister($id)
     {
-        // $user = Auth::user();
-        // $samozber = Samozber::findOrFail($id);
-
-        // SamozberSeznam::create([
-        //     'id_samozber' => $samozber->id,
-        //     'id_uzivatel' => $user->id,
-        // ]);
-
-        // return redirect()->route('samozber.index')->with('success', 'Samozber added to your list successfully!');
-
         $user = Auth::user(); // Prihlásený používateľ
-        $samozber = Samozber::findOrFail($id); // Nájdeme samozber
 
-        // Skontroluj, či už používateľ nie je zaregistrovaný
-        $alreadyRegistered = SamozberSeznam::where('id_samozber', $samozber->id)
+        // Nájdeme záznam v samozber_seznam podľa id samozberu a id používateľa
+        $record = SamozberSeznam::where('id_samozber', $id)
+            ->where('id_uzivatel', $user->id)
+            ->firstOrFail();
+
+        // Zrušenie účasti
+        $record->delete();
+
+        return redirect()->route('samozber.index')->with('success', 'Účasť na samozbere bola zrušená.');
+    }
+
+    public function destroy($id)
+    {
+        $user = Auth::user(); // Prihlásený používateľ
+
+        // Nájdeme samozber, ktorý má byť zmazaný, a overíme, že ho vytvoril prihlásený používateľ
+        $samozber = Samozber::where('id', $id)->where('id_uzivatel', $user->id)->firstOrFail();
+
+        // Odstránime samozber
+        $samozber->delete();
+
+        return redirect()->route('samozber.index')->with('success', 'Samozber bol úspešne zmazaný.');
+    }
+
+    public function register($id)
+    {
+        $user = Auth::user(); // Prihlásený používateľ
+
+        // Overenie, či užívateľ nie je už zaregistrovaný
+        $exists = SamozberSeznam::where('id_samozber', $id)
             ->where('id_uzivatel', $user->id)
             ->exists();
 
-        if ($alreadyRegistered) {
-            return redirect()->route('samozber.index')->with('error', 'Už ste registrovaný na tento samozber.');
+        if (!$exists) {
+            // Pridanie záznamu do samozber_seznam
+            SamozberSeznam::create([
+                'id_samozber' => $id,
+                'id_uzivatel' => $user->id,
+            ]);
         }
 
-        // Vytvoríme záznam v tabuľke `samozber_seznam`
-        SamozberSeznam::create([
-            'id_samozber' => $samozber->id,
-            'id_uzivatel' => $user->id,
-        ]);
-
-        return redirect()->route('samozber.index')->with('success', 'Úspešne ste sa registrovali na samozber.');
+        return redirect()->route('samozber.index')->with('success', 'Úspešne ste sa zaregistrovali na samozber.');
     }
     
     public function store(Request $request) // ukladanie samozberu
