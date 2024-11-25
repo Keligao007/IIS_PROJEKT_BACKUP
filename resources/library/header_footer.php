@@ -99,6 +99,15 @@ function make_header_login($title)
     <nav class="nav">
       <ul class="navigation">
         <li><a href="<?php echo url('/user'); ?>"><i class="fas fa-home"></i> Domov</a></li>
+        <?php if (Auth::check()): ?>
+            <li><a href="<?php echo route('samozber.index'); ?>"><i class="fas fa-list"></i> Zobraziť samozbery</a></li>
+            <li><a href="<?php echo route('samozber.create'); ?>"><i class="fas fa-plus"></i> Vytvoriť samozber</a></li>
+            <li><a href="<?php echo route('navrhnut_kategoriu'); ?>"><i class="fas fa-user-plus"></i> Navrhnut kategoriu</a></li>
+            <li><a href="<?php echo route('vlozit_nabidku'); ?>"><i class="fas fa-sign-in-alt"></i> Vlozit nabidku</a></li>
+            <li><a href="<?php echo route('prechadzat_nabidky'); ?>"><i class="fas fa-sign-in-alt"></i> Prechadzat nabidky (vsetky)</a></li>
+            <li><a href="<?php echo route('zobrazit_nabidky'); ?>"><i class="fas fa-sign-in-alt"></i> Spravovat svoje nabidky (len jeho)</a></li>
+            <li><a href="<?php echo route('show_objednavka'); ?>"><i class="fas fa-shopping-cart"></i> Moje objednávky</a></li>
+        <?php endif; ?>
         <li><a href="<?php echo route('editProfile'); ?>"><i class="fas fa-user-edit"></i> Edit Profilu</a></li>
         <li>
           <form action="<?php echo route('logout'); ?>" method="post" style="display: inline;">
@@ -108,14 +117,6 @@ function make_header_login($title)
             </button>
           </form>
         </li>
-        <?php if (Auth::check()): ?>
-            <li><a href="<?php echo route('samozber.index'); ?>"><i class="fas fa-list"></i> Zobraziť samozbery</a></li>
-            <li><a href="<?php echo route('samozber.create'); ?>"><i class="fas fa-plus"></i> Vytvoriť samozber</a></li>
-            <li><a href="<?php echo route('navrhnut_kategoriu'); ?>"><i class="fas fa-user-plus"></i> Navrhnut kategoriu</a></li>
-            <li><a href="<?php echo route('vlozit_nabidku'); ?>"><i class="fas fa-sign-in-alt"></i> Vlozit nabidku</a></li>
-            <li><a href="<?php echo route('prechadzat_nabidky'); ?>"><i class="fas fa-sign-in-alt"></i> Prechadzat nabidky (vsetky)</a></li>
-            <li><a href="<?php echo route('zobrazit_nabidky'); ?>"><i class="fas fa-sign-in-alt"></i> Spravovat svoje nabidky (len jeho)</a></li>
-        <?php endif; ?>
       </ul>
       <div class="center-text">
           <?php
@@ -177,7 +178,6 @@ function make_header_moderator($title)
             </button>
           </form>
         </li>
-        // zatial tento logout nefunguje
       </ul>
     </div>
   </header>
@@ -233,7 +233,6 @@ function make_header_admin($title)
             </button>
           </form>
         </li>
-        // zatial tento logout nefunguje
       </ul>
     </div>
   </header>
@@ -246,6 +245,11 @@ function make_footer()
 ?>
   <footer style="background-color: #525252; color: white; padding: 20px; font-size: 14px;">
     <div style="display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center;">
+
+      <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
+        <img src="images/logo.png" alt="ZELŇAK Logo" style="width: 140px; height: 140px;">    
+      </div> 
+        
         <!-- About Section -->
         <div>
             <h2 style="margin-bottom: 10px;">O SPOLOČNOSTI:</h2>
@@ -281,10 +285,11 @@ function make_footer()
             <p><a href="https://www.twitter.com" class="social-link"><i class="fab fa-twitter"></i> NÁŠ TWITTER</a></p>
         </div>
     </div>
-    <div style="background-color: #8C8C8C; text-align: center; margin-top: 20px;">
-        <h2>Ďakujeme Vám za návštevu našej stránky!</h2>
-        <h3> Copyright <span class="large-copy">&copy;</span> Zelňak official Brno, Czech Republic 2024.</h3>    </div>
   </footer>
+  <div style="background-color: #8C8C8C; color: white; text-align: center; padding: 8px;">
+    <h2>Ďakujeme Vám za návštevu našej stránky!</h2>
+    <h3> Copyright <span class="large-copy">&copy;</span> Zelňak official Brno, Czech Republic 2024.</h3>
+  </div>
 </body>
 </html>
 <?php

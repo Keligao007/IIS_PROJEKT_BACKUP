@@ -21,7 +21,7 @@
                     <thead>
                         <tr>
                             <th>Výber</th>
-                            <th style="padding-left: 40px;">Názov kategórie</th>
+                            <th style="text-align: right; padding-left: 110px";>Názov kategórie</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,7 +30,7 @@
                                 <td>
                                     <input type="radio" name="parent_kategoria_id" value="{{ $kategoria->id }}" id="kategoria_{{ $kategoria->id }}" class="form-check-input" required>
                                 </td>
-                                <td>
+                                <td style="text-align: right; padding-left: 110px";>
                                     <label for="kategoria_{{ $kategoria->id }}" class="form-check-label" style="padding-left: 40px;">{{ $kategoria->meno }}</label>
                                 </td>
                             </tr>
@@ -45,7 +45,7 @@
                     <thead>
                         <tr>
                             <th>Výber</th>
-                            <th style="padding-left: 40px;">Názov atribútu</th>
+                            <th style="text-align: right; padding-left: 80px";>Názov atribútu</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,7 +54,7 @@
                                 <td>
                                     <input type="checkbox" name="atributy[]" value="{{ $atribut->id }}" id="atribut_{{ $atribut->id }}" class="form-check-input">
                                 </td>
-                                <td>
+                                <td style="text-align: right; padding-left: 80px";>
                                     <label for="atribut_{{ $atribut->id }}" class="form-check-label" style="padding-left: 40px;">{{ $atribut->nazov }}</label>
                                 </td>
                             </tr>
@@ -66,6 +66,7 @@
             <!-- Tlačidlo na odoslanie -->
             <button type="submit" class="btn btn-primary">Navrhnúť kategóriu</button>
         </form>
+        <p style="color: #9c9c9c;">hint: prosím nerobte kombinácie cena/kg, cena/kus a podobne (nemiestajte kg a kusy)</p>
     </div>
 </div>
 

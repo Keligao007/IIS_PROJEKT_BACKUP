@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentace</title>
+</head>
+<body>    
+    <h1>Zelný trh</h1>
+    
+    <h3>Autoři</h3>
+    <ul>
+        <li>Rudolf Baumgartner (<a href="mailto:xbaumg01@stud.fit.vutbr.cz">xbaumg01@stud.fit.vutbr.cz</a>) - Front-end, funkcie header, footer, editing profilu, samozber, ...</li>
+        <li>Juraj Gergel (<a href="mailto:xgerg02@stud.fit.vutbr.cz">xgerg02@stud.fit.vutbr.cz</a>) - Role moderátor, neregistrovaný, databáza, migrácie, modely, ...</li>
+        <li>Kristián Grečnár (<a href="mailto:xgrecn00@stud.fit.vutbr.cz">xgrecn00@stud.fit.vutbr.cz</a>) - Prihlasovanie, admin, front-end, ...</li>
+    </ul>
+    
+    <h3>URL aplikace</h3>
+    <p>
+        <a href="http://www.stud.fit.vutbr.cz/~xautor01/IIS"> http://www.stud.fit.vutbr.cz/~xautor01/IIS </a>
+    </p>
+    <p>doplníme potom</p>
+    
+    <h3>Uživatelé systému pro testování</h3>
+    <p>Uveďte prosím existující zástupce všech rolí uživatelů.</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Heslo</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>admin</td>
+                <td>ADMIN123</td>
+                <td>Administrátor</td>
+            </tr>
+            <tr>
+                <td>moderator</td>
+                <td>MODERATOR123</td>
+                <td>Moderátor</td>
+            </tr>
+            <tr>
+                <td>pouzivatel1</td>
+                <td>user123</td>
+                <td>Registrovaný uživateľ</td>
+            </tr>
+            <tr>
+                <td>pouzivatel2</td>
+                <td>user123</td>
+                <td>Registrovaný uživateľ</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Video</h3>
+    <p>
+        <a href="https://www.youtube.com/watch?v=f1hCx-NXbek"> www.youtube.com </a>
+    </p>
+    
+    <h3>Implementace</h3>
+    <p>Stručná dokumentace k implementaci, která popisuje, které části projektu (např. PHP skripty) implementují jednotlivé případy použití.</p>
+    <h4>Hlavní implementace</h4>
+    <ul>
+        <li>Autentifikácia a autorizácia užívateľov: Implementované v <code>UserController.php</code> a <code>web.php</code> (routy na prihlásenie, registráciu a odhlásenie).</li>
+        <li>Správa užívateľov: Implementované v <code>UserController.php</code> a zodpovedajúcich Blade šablónach.</li>
+        <li>Správa produktov: Implementované v <code>ProductController.php</code> a zodpovedajúcich Blade šablónach.</li>
+        <li>Hodnotenie produktov: Implementované v <code>RatingController.php</code> a zodpovedajúcich Blade šablónach.</li>
+        <li>Samozber: Implementované v <code>SamozberController.php</code> a zodpovedajúcich Blade šablónach.</li>
+    </ul>
+    
+    <h3>Databáze</h3>
+    <p>Zde vložte grafické schéma relační databáze (tabulek v databázi).</p>
+    
+    <img src="public/images/use_case_final.png" alt="Grafické schéma relační databáze">
+    <!-- nejde to tam este pridat fotku -->
+    
+    <h3>Inštalácia</h3>
+    <h4>Postup inštalácie na server:</h4>
+    
+    
+    <h3>Známé problémy</h3>
+    <p>Zde popište, které body zadání nejsou implementovány a z jakého důvodu.</p>
+    <ul>
+        <li><strong>Filtrovanie pre registrovaných uživatelov:</strong> Z časového dôvodu sme sa rozhodli toto neimplementovať.</li>
+        <li><strong>Pokročilé vyhledávání:</strong> Pokročilé vyhledávání produktů nebylo implementováno.</li>
+        <li><strong>Dobré vyřizování objednávek:</strong> Pokročilé vyřizování objednávek nebylo implementováno, z časového dôvodu sme urobili len menej pokročilé.</li>
+        <li><strong>Hodnocení zakoupených objednávek:</strong> Hodnocení zakoupených objednávek nebylo implementováno.</li>
+        <li><strong>Neregistrovaný uživatel nemůže porovnávat ceny:</strong> Toto jsme dali jako filtrování.</li>
+        <li><strong>Objednávanie nie je dobre urobené:</strong> Je to jednoduché, lebo množstvo za kilo a cena za kilo sa objednáva tak isto.</li>
+    </ul>
+</body>
+</html>
+<!-- doriesit tuto dokumentaciu-->

@@ -51,13 +51,6 @@
                 Prosím dbajte na to, že ide o edukačný projekt, nie komerčnú platformu.
             </p>
         </section>
-
-        <section>
-            <a href="{{ route('samozber.index') }}" class="btn btn-primary">View Samozber List</a>
-        </section>
-        <section>
-            <a href="{{ route('samozber.create') }}" class="btn btn-primary">Add samozber</a>
-        </section>
     </main>
 
         <script>

@@ -3,15 +3,13 @@
 @section('title', 'Moje Objednavky')
 @section('header', 'Moje Objednavky')
 
-
 @section('content')
-    <div class="container">
-        <h1>Moje objednávky</h1>
-
+    <div class="show-nabidky-container">
+        <h2 class="show-nabidky-section-title">Moje Objednávky</h2>
         @if ($objednavky->isEmpty())
-            <p>Nemáte žiadne objednávky.</p>
+            <p class="alert alert-danger">Nemáte žiadne objednávky.</p>
         @else
-            <table border="1">
+            <table class="styled-table">
                 <thead>
                     <tr>
                         <th>ID Objednávky</th>
@@ -26,19 +24,19 @@
                             <td>{{ $objednavka->id }}</td>
                             <td>{{ $objednavka->nabidka->meno }}</td>
                             <td>
-                                <ul>
+                                <ul class="styled-list">
                                     @foreach ($objednavka->objednavkaAtribut as $atribut)
-                                        <li>
+                                        <li class="attribute-item">
                                             {{ $atribut->atribut->nazov }}: {{ $atribut->hodnota }}
                                         </li>
                                     @endforeach
                                 </ul>
                             </td>
-                            <td>
+                            <td class="suma-cell">
                                 @if ($objednavka->suma > 0)
                                     {{ $objednavka->suma }} €
                                 @else
-                                    <span style="color: red;">Nedostupné</span>
+                                    <span class="text-danger">Nedostupné</span>
                                 @endif
                             </td>
                         </tr>
@@ -46,7 +44,5 @@
                 </tbody>
             </table>
         @endif
-
-
     </div>
 @endsection
