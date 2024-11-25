@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             push_navrh_kategorie_atribut::class,
             push_nabidka::class,
             push_nabidka_atribut::class,
+            push_samozbery::class,
         ]);
     }
 }
