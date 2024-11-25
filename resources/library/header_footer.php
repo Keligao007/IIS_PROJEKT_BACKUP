@@ -246,9 +246,9 @@ function make_footer()
   <footer style="background-color: #525252; color: white; padding: 20px; font-size: 14px;">
     <div style="display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center;">
 
-      <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
-        <img src="images/logo.png" alt="ZELŇAK Logo" style="width: 140px; height: 140px;">    
-      </div> 
+    <div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
+      <img src="<?php echo url('images/logo.png'); ?>" alt="ZELŇAK Logo" style="width: 140px; height: 140px;">
+    </div> 
         
         <!-- About Section -->
         <div>
