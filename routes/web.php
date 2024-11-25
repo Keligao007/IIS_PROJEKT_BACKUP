@@ -13,6 +13,7 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
 use App\Http\Controllers\SamozberController;
 use App\Http\Controllers\RegisteredController;
+use Symfony\Component\Routing\RouterInterface;
 
 
 Route::get('/',[HomeController::class, 'index'])->name('index');
@@ -137,4 +138,6 @@ Route::delete('/nabidka/{id}', [RegistrovanyUzivatelController::class, 'destroy'
 // routy pre objednavku
 
 Route::post('/user/prechadzat_nabidky/objednat/{nabidkaId}', [ObjednavkaController::class, 'store_order'])->name('store_order');
+
+Route::get('user_moje_objednavky', [ObjednavkaController::class, 'show_objednavka'])->name('show_objednavka');
 

@@ -31,6 +31,9 @@ class ObjednavkaController extends Controller
         // Načítanie atribútov danej ponuky
         $atributy = $nabidka->nabidka_atribut;
 
+        //
+        $cenaAtribut = $atributy->whereIn('id_atribut', [1, 2])->first();
+
         // Nájdeme množstvo (ID 3 alebo 4)
         $mnozstvoAtribut = $atributy->whereIn('id_atribut', [3, 4])->first();
 
@@ -47,11 +50,14 @@ class ObjednavkaController extends Controller
         $mnozstvoAtribut->hodnota -= $mnozstvo;
         $mnozstvoAtribut->save();
 
+        $suma = $cenaAtribut->hodnota * $mnozstvo;
+
         // Vytvorenie objednávky
         $objednavka = Objednavka::create([
             'id_nabidka' => $nabidka->id,
             'id_uzivatel' => Auth::user()->id,
             'mnozstvo' => $mnozstvo,
+            'suma' => $suma,
         ]);
 
         ObjednavkaAtribut::create([
@@ -64,6 +70,17 @@ class ObjednavkaController extends Controller
         // ])
 
         return redirect()->route('prechadzat_nabidky')->with('success', 'Objednávka bola úspešne vytvorená.');
+    }
+
+    public function show_objednavka()
+    {
+        $user = Auth::user();
+
+        // Získanie všetkých objednávok aktuálneho používateľa
+        $objednavky = Objednavka::where('id_uzivatel', $user->id)->with(['nabidka', 'objednavkaAtribut.atribut'])->get();
+
+        // Odoslanie objednávok do view
+        return view('user/objednavky', ['objednavky' => $objednavky]);
     }
 
 

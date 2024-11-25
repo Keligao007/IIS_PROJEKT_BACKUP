@@ -12,6 +12,9 @@
     <p class="center-text">Žiadne ponuky na zobrazenie.</p>
     @else
         <div class="table-container">
+
+        <a href="{{ route('show_objednavka') }}">Moje objednávky</a>
+
             <table class="styled-table">
                 <thead>
                     <tr>

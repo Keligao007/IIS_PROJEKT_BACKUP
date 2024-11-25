@@ -14,6 +14,7 @@ class Objednavka extends Model
     protected $fillable = [
         'id_nabidka',
         'id_uzivatel',
+        'suma',
     ];
 
     // Vztah k Nabidka
